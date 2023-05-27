@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:background="@color/background">
+
+<ImageView
+    android:id="@+id/lGambar1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/shape"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    />
+
+<TextView
+    android:id="@+id/lTxt1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/lGambar1"
+    android:text="Welcome Back!"
+    android:textSize="25dp"
+    android:textColor="@color/black"
+    android:layout_centerHorizontal="true"
+    android:fontFamily="@font/poppinssemibold"/>
+
+<ImageView
+    android:id="@+id/lgambar2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/login"
+    android:layout_below="@+id/lTxt1"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="5dp"
+    />
+
+<LinearLayout
+    android:id="@+id/ly2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_below="@+id/lgambar2"
+    android:padding="30dp">
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:background="@drawable/button_shape"
+        android:hint="Username"
+        android:paddingLeft="10dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppinsregular"/>
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:background="@drawable/button_shape"
+        android:hint="Password"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppinsregular"/>
+</LinearLayout>
+
+
+
+<Button
+    android:id="@+id/loginbtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/ly2"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="2dp"
+    android:width="290dp"
+    android:background="@drawable/button_shape"
+    android:fontFamily="@font/poppinssemibold"
+    android:text="LOGIN"
+    android:textColor="@color/white"
+    android:textSize="18dp" />
+
+<LinearLayout
+    android:id="@+id/txtloginwith"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/loginbtn"
+    android:gravity="center"
+    android:layout_marginTop="18dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Or Login with"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="15dp"/>
+
+</LinearLayout>
+
+    <ImageView
+        android:src="@drawable/gugel"
+        android:id="@+id/googlesignin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txtloginwith"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        />
+
+</RelativeLayout>
