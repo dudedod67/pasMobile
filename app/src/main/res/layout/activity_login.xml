@@ -38,7 +38,7 @@ android:background="@color/background">
     android:layout_marginTop="5dp"
     />
 
-<LinearLayout
+    <LinearLayout
     android:id="@+id/ly2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -68,41 +68,41 @@ android:background="@color/background">
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:fontFamily="@font/poppinsregular"/>
-</LinearLayout>
+    </LinearLayout>
 
 
 
-<Button
-    android:id="@+id/loginbtn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/ly2"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="2dp"
-    android:width="290dp"
-    android:background="@drawable/button_shape"
-    android:fontFamily="@font/poppinssemibold"
-    android:text="LOGIN"
-    android:textColor="@color/white"
-    android:textSize="18dp" />
-
-<LinearLayout
-    android:id="@+id/txtloginwith"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_below="@+id/loginbtn"
-    android:gravity="center"
-    android:layout_marginTop="18dp">
-
-    <TextView
+    <Button
+        android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Or Login with"
-        android:fontFamily="@font/poppinsregular"
-        android:textSize="15dp"/>
+        android:layout_below="@+id/ly2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:width="290dp"
+        android:background="@drawable/button_shape"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="LOGIN"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/txtloginwith"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/loginbtn"
+        android:gravity="center"
+        android:layout_marginTop="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or Login with"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
 
     <ImageView
         android:src="@drawable/gugel"

@@ -25,15 +25,47 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyMovieAdapt
 
     public class MyMovieAdapter extends RecyclerView.ViewHolder {
 
+        //
         public TextView tvTitleMovie;
         public TextView tvDate;
+        public TextView tvVote;
+        public TextView tvLanguage;
+        public TextView tvMovieDesc;
         public ImageView ivMovie;
 
         public MyMovieAdapter(@NonNull View itemView) {
             super(itemView);
+            //
             tvTitleMovie = itemView.findViewById(R.id.tvTitleMovie);
             tvDate = itemView.findViewById(R.id.tvDate);
+            tvVote = itemView.findViewById(R.id.tvVote);
+            tvLanguage = itemView.findViewById(R.id.tvLanguage);
+            tvMovieDesc = itemView.findViewById(R.id.tvMovieDesc);
             ivMovie = itemView.findViewById(R.id.ivMovie);
+
+
+           itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   listener.onListMovieSelected(movieList.get(getAdapterPosition()));
+               }
+           });
+
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (listener != null){
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION){
+                            listener.onItemLongClick(pos);
+                        }
+                    }
+                    return true;
+                }
+
+            });
         }
     }
 
@@ -51,11 +83,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyMovieAdapt
         return new MyMovieAdapter(itemView);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.MyMovieAdapter holder, int position) {
         final MovieModel listMovie = this.movieList.get(position);
+        //
         holder.tvTitleMovie.setText(listMovie.getTitle());
         holder.tvDate.setText(listMovie.getDate());
+        holder.tvVote.setText(listMovie.getVote());
+        holder.tvLanguage.setText(listMovie.getLanguage());
         Glide.with(holder.itemView.getContext()).load("https://image.tmdb.org/t/p/w500/"+listMovie.getPoster()).into(holder.ivMovie);
     }
 
@@ -66,7 +102,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyMovieAdapt
 
     public interface MovieAdapterListener{
 
-        void onContactSelected(MovieModel myMovie);
+        void onItemLongClick(int position);
+
+        void onListMovieSelected(MovieModel ListMovie);
+
+
     }
 
 }

@@ -9,11 +9,9 @@ public class MovieModel implements Parcelable {
     private String title;
     private String date;
     private String vote;
+    private String language;
     private String poster;
-
-    MovieModel () {
-
-    }
+    private String deskripsi;
 
 
     protected MovieModel(Parcel in) {
@@ -21,6 +19,12 @@ public class MovieModel implements Parcelable {
         date = in.readString();
         vote = in.readString();
         poster = in.readString();
+        language = in.readString();
+        deskripsi = in.readString();
+    }
+
+    MovieModel () {
+
     }
 
     public static final Creator<MovieModel> CREATOR = new Creator<MovieModel>() {
@@ -67,6 +71,24 @@ public class MovieModel implements Parcelable {
         this.poster = poster;
     }
 
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,5 +100,7 @@ public class MovieModel implements Parcelable {
         dest.writeString(date);
         dest.writeString(vote);
         dest.writeString(poster);
+        dest.writeString(language);
+        dest.writeString(deskripsi);
     }
 }
