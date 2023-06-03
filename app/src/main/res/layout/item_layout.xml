@@ -13,7 +13,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_margin="10dp"
             app:cardCornerRadius="30dp"
             app:cardElevation="20dp">
@@ -35,20 +35,42 @@
 
                 <TextView
                     android:id="@+id/tvTitleMovie"
+                    android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppinssemibold"
                     android:textSize="18dp"
                     android:layout_marginLeft="130dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+                
 
                 <TextView
                     android:id="@+id/tvDate"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/poppinsregular"
                     android:layout_marginLeft="130dp"
                     android:layout_marginTop="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvLanguage"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinsregular"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvVote"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinsregular"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

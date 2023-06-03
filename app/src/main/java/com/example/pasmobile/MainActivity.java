@@ -1,15 +1,15 @@
 package com.example.pasmobile;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.nfc.Tag;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -48,17 +48,19 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                                 myTeam.setTitle(jsonTeam.getString("title"));
                                 myTeam.setPoster(jsonTeam.getString("poster_path"));
                                 myTeam.setDate(jsonTeam.getString("release_date"));
+                                myTeam.setVote(jsonTeam.getString("vote_average"));
+                                myTeam.setLanguage(jsonTeam.getString("original_language"));
+                                myTeam.setDeskripsi(jsonTeam.getString("overview"));
 
                                     listDataEPLTeams.add(myTeam);
                             }
                             rvKontakName = findViewById(R.id.rvkontakname);
-//                            progressBar = findViewById(R.id.progressBar);
                             adapterListKontak = new MovieAdapter(getApplicationContext(), listDataEPLTeams,MainActivity.this);
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                             rvKontakName.setHasFixedSize(true);
                             rvKontakName.setLayoutManager(mLayoutManager);
                             rvKontakName.setAdapter(adapterListKontak);
-//                            progressBar.setVisibility(View.GONE);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -71,9 +73,37 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                     }
                 });
 
-
-
     }
+    @Override
+    public void onItemLongClick(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Perhatian!")
+                .setMessage("Apakah kamu yakin ingin menghapus item ini?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Tindakan yang dilakukan ketika tombol OK diklik
+                        listDataEPLTeams.remove(position);
+                        adapterListKontak.notifyItemRemoved(position);
+                        Toast.makeText(MainActivity.this.getApplicationContext(), "Dihapus", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Tindakan yang dilakukan ketika tombol Batal diklik
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    @Override
+    public void onListMovieSelected(MovieModel ListMovie) {
+        Intent intent = new Intent(MainActivity.this, DetailPage.class);
+        intent.putExtra("myteam", ListMovie);
+        startActivity(intent);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +114,5 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         getMovieModel();
     }
 
-    @Override
-    public void onContactSelected(MovieModel myMovie) {
 
-    }
 }

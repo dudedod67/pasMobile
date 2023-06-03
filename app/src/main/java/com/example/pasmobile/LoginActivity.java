@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(JSONObject response) {
                                 // Handle the response
                                 // ...
-                                Log.d("Login Sukses!!!!!!!!!!", "onResponse: "+response.toString());
+                                Log.d("Login Sukses!!!!", "onResponse: "+response.toString());
                                 try {
                                     boolean status = response.getBoolean("status");
                                     String message = response.getString("message");
