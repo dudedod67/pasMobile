@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -26,13 +28,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     RecyclerView rvKontakName;
     ArrayList<MovieModel> listDataEPLTeams;
     private MovieAdapter adapterListKontak;
+    ProgressBar pbloading;
 
     public void getMovieModel() {
         String url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=8f9a90c460a187a0945c8f561d9a3bbe";
-
         AndroidNetworking.get(url)
-
-
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                                 myTeam.setLanguage(jsonTeam.getString("original_language"));
                                 myTeam.setDeskripsi(jsonTeam.getString("overview"));
 
-                                    listDataEPLTeams.add(myTeam);
+                                listDataEPLTeams.add(myTeam);
                             }
                             rvKontakName = findViewById(R.id.rvkontakname);
                             adapterListKontak = new MovieAdapter(getApplicationContext(), listDataEPLTeams,MainActivity.this);
@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                             rvKontakName.setLayoutManager(mLayoutManager);
                             rvKontakName.setAdapter(adapterListKontak);
 
-
+                            pbloading.setVisibility(View.GONE);
+                            rvKontakName.setVisibility(View.VISIBLE);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listDataEPLTeams = new ArrayList<>();
-
+        pbloading = findViewById(R.id.pbloading);
         getMovieModel();
     }
 
